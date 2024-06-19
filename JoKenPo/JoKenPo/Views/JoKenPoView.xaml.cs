@@ -1,14 +1,12 @@
+using JoKenPo.ViewModels;
+
 namespace JoKenPo.Views;
 
-public partial class JoKenPoView : ContentView
+public partial class JoKenPoView : ContentPage
 {
 	public JoKenPoView()
 	{
 		InitializeComponent();
-	}
-
-    private void JokenPoButton_Clicked(object sender, EventArgs e)
-    {
-
+        BindingContext = new JoKenPoViewModel();
     }
 }

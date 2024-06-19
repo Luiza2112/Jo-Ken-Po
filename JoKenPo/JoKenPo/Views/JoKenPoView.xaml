@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JoKenPo.Views.JoKenPoView">
-
+             x:Class="JoKenPo.Views.JoKenPoView"
+             Title="JoKenPo">
+    
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0" 
-            Spacing="25">
+        <VerticalStackLayout 
+        Spacing="25"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+            
             <Label 
-                Text="Oi"
-                VerticalOptions="Center"/>
+            x:Name="Resultado"
+            Text="{Binding Resultado}"
+            />
 
             <Picker
-                x:Name="OpcoesPicker"
-                Title="Selecione Pedra, Papel ou Tesoura">
+            x:Name="OpcoesPicker"
+            Title="Escolha entre Pedra, Papel e Tesoura:"
+            FontSize="Micro"
+            WidthRequest="300"
+            HeightRequest="70">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Pedra</x:String>
@@ -24,12 +31,12 @@
             </Picker>
 
             <Button
-                x:Name="JoKenPoButton"
-                Text="Jogar"
-                BackgroundColor="Navy"
-                Clicked="JokenPoButton_Clicked"
-                />
+            x:Name="JoKenPoButton"
+            Text="Jogar"
+            BackgroundColor="Navy"
+            Command="{Binding JogarCommand}"
+            />
 
         </VerticalStackLayout>
     </ScrollView>
-</ContentView>
+</ContentPage>
