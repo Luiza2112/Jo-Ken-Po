@@ -23,23 +23,32 @@ namespace JoKenPo.ViewModels
         [ObservableProperty]
         public int pontuacaoOponent;
 
+        [ObservableProperty]
+        public string imageUser;
+
+        [ObservableProperty]
+        public string imageOponent;
+
         public ICommand JogarCommand { get; }
 
         public JoKenPoViewModel()
         {
             JogarCommand = new Command(Jogar);
+        
         }
 
         public void Jogar()
         {
-            JoKenPo jokenpo = new JoKenPo();
+            JoKenPoViewModel jokenpo = new JoKenPoViewModel();
             jokenpo.Jogar();
+            int pontuacaoOponent = 0;
+            int pontuacaoUser = 0;
 
-            if(Escolha == "Papel" && OpcaoSorteada == "Tesoura" || Escolha == "Pedra" && JoKenPo.OpcaoSorteada == "Papel" || Escolha = "Tesoura" && JoKenPo.OpcaoSorteada == "Pedra")
+            if (Escolha == "Papel" && OpcaoSorteada == "Tesoura" || Escolha == "Pedra" && OpcaoSorteada == "Papel" || Escolha = "Tesoura" && OpcaoSorteada == "Pedra")
             {
                 pontuacaoOponent += 1;
             }
-            else if (escolha == "Tesoura" && JoKenPo.OpcaoSorteada == "Papel" || escolha == "Papel" && JoKenPo.OpcaoSorteada == "Pedra" || escolha = "Pedra" && JoKenPo.OpcaoSorteada == "Tesoura")
+            else if (Escolha == "Tesoura" && OpcaoSorteada == "Papel" || Escolha == "Papel" && OpcaoSorteada == "Pedra" || Escolha = "Pedra" && OpcaoSorteada == "Tesoura")
             {
                 pontuacaoUser += 1;
             }

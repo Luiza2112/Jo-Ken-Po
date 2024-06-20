@@ -18,6 +18,7 @@
             <Picker
             x:Name="OpcoesPicker"
             Title="Escolha entre Pedra, Papel e Tesoura:"
+            SelectedItem="{Binding OpcoesPicker}"
             FontSize="Micro"
             WidthRequest="300"
             HeightRequest="70">
