@@ -1,5 +1,10 @@
 
 using System.Windows.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace JoKenPo.ViewModels
@@ -13,14 +18,14 @@ namespace JoKenPo.ViewModels
         public string escolha;
 
         [ObservableProperty]
-        public string pontuacaoU;
+        public int pontuacaoUser;
 
         [ObservableProperty]
-        public string pontuacaoO;
+        public int pontuacaoOponent;
 
         public ICommand JogarCommand { get; }
 
-        public void JoKenPoViewModel()
+        public JoKenPoViewModel()
         {
             JogarCommand = new Command(Jogar);
         }
@@ -28,14 +33,15 @@ namespace JoKenPo.ViewModels
         public void Jogar()
         {
             JoKenPo jokenpo = new JoKenPo();
+            jokenpo.Jogar();
 
-            if(escolha == 'Papel' && JoKenPo.OpcaoSorteada == 'Tesoura' || escolha == 'Pedra' && JoKenPo.OpcaoSorteada == 'Papel' || escolha = 'Tesoura' && JoKenPo.OpcaoSorteada == 'Pedra')
+            if(Escolha == "Papel" && OpcaoSorteada == "Tesoura" || Escolha == "Pedra" && JoKenPo.OpcaoSorteada == "Papel" || Escolha = "Tesoura" && JoKenPo.OpcaoSorteada == "Pedra")
             {
-                pontuacaoO += 1;
+                pontuacaoOponent += 1;
             }
-            else if (escolha == 'Tesoura' && JoKenPo.OpcaoSorteada == 'Papel' || escolha == 'Papel' && JoKenPo.OpcaoSorteada == 'Pedra' || escolha = 'Pedra' && JoKenPo.OpcaoSorteada == 'Tesoura')
+            else if (escolha == "Tesoura" && JoKenPo.OpcaoSorteada == "Papel" || escolha == "Papel" && JoKenPo.OpcaoSorteada == "Pedra" || escolha = "Pedra" && JoKenPo.OpcaoSorteada == "Tesoura")
             {
-                pontuacaoU += 1;
+                pontuacaoUser += 1;
             }
         }
 

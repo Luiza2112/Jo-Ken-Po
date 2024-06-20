@@ -3,17 +3,32 @@ namespace JoKenPo.Models
 	public class JoKenPo
 	{
         public string OpcaoEscolhida { get; set; }
-        public int OpcaoSorteada { get; set; }
+        public string OpcaoSorteada { get; set; }
 
         public JoKenPo()
 		{
 
 		}
-
-		public string Jogar()
+        
+        public string Jogar()
 		{
 			string OpcaoEscolhida = Convert.ToString(OpcoesPicker.SelectedItem);
-			OpcaoSorteada = new Random().Next(3);
+			int Opcao = new Random().Next(3);
+
+			if (Opcao == 1)
+			{
+				OpcaoSorteada = "Pedra";
+			}
+			else if(Opcao == 2)
+			{
+				OpcaoSorteada = "Papel";
+			}
+			else if(Opcao == 3)
+			{
+				OpcaoSorteada = "Tesoura";
+			}
+
+			return OpcaoSorteada;
 		}
 	}
 }
