@@ -10,23 +10,33 @@
         HorizontalOptions="Center"
         VerticalOptions="Center">
             
+            <Image
+            Source="{Binding Imagem1}" />
+            <Label
+            x:Name="PontuacaoOponent" Text="{Binding Pontuacao1}"/>
+
+            <Image
+            Source="{Binding Imagem2}" />
+            <Label
+            x:Name="PontuacaoUser" Text="{Binding Pontuacao2}"/>
+
             <Label 
-            x:Name="Resultado"
+            x:Name="ResultadoFinal"
             Text="{Binding Resultado}"
             />
 
             <Picker
             x:Name="OpcoesPicker"
             Title="Escolha entre Pedra, Papel e Tesoura:"
-            SelectedItem="{Binding OpcoesPicker}"
+            SelectedItem="{Binding Escolha}"
             FontSize="Micro"
             WidthRequest="300"
             HeightRequest="70">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Pedra</x:String>
-                        <x:String>Papel</x:String>
-                        <x:String>Tesoura</x:String>
+                        <x:String>pedra</x:String>
+                        <x:String>papel</x:String>
+                        <x:String>tesoura</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>

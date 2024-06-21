@@ -6,51 +6,70 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Contacts;
 
 namespace JoKenPo.ViewModels
 {
     public partial class JoKenPoViewModel : ObservableObject
 	{
         [ObservableProperty]
-        private string resultado;
+        private string imagem1;
+
+        [ObservableProperty]
+        public string pontuacao1;
+
+        [ObservableProperty]
+        public string imagem2;
+
+        [ObservableProperty]
+        public string pontuacao2;
+
+        [ObservableProperty]
+        public string resultado;
 
         [ObservableProperty]
         public string escolha;
-
-        [ObservableProperty]
-        public int pontuacaoUser;
-
-        [ObservableProperty]
-        public int pontuacaoOponent;
-
-        [ObservableProperty]
-        public string imageUser;
-
-        [ObservableProperty]
-        public string imageOponent;
 
         public ICommand JogarCommand { get; }
 
         public JoKenPoViewModel()
         {
             JogarCommand = new Command(Jogar);
-        
+            Pontuacao1 = contUser.ToString();
+            Pontuacao2 = contOponent.ToString();
+
         }
+
+        int contUser = 0;
+        int contOponent = 0;
 
         public void Jogar()
         {
-            JoKenPoViewModel jokenpo = new JoKenPoViewModel();
-            jokenpo.Jogar();
-            int pontuacaoOponent = 0;
-            int pontuacaoUser = 0;
+            Play play = new Play();
+            play.Jogar();
+            Imagem1 = $"{Escolha}.png";
+            Imagem2 = $"{play.OpcaoSorteada}.png";
 
-            if (Escolha == "Papel" && OpcaoSorteada == "Tesoura" || Escolha == "Pedra" && OpcaoSorteada == "Papel" || Escolha = "Tesoura" && OpcaoSorteada == "Pedra")
+            if(Escolha == play.OpcaoSorteada)
             {
-                pontuacaoOponent += 1;
+                Pontuacao1 = Pontuacao1;
+                Pontuacao2 = Pontuacao2;
             }
-            else if (Escolha == "Tesoura" && OpcaoSorteada == "Papel" || Escolha == "Papel" && OpcaoSorteada == "Pedra" || Escolha = "Pedra" && OpcaoSorteada == "Tesoura")
+            else if (Escolha == "Papel" && play.OpcaoSorteada == "Tesoura" || Escolha == "Pedra" && play.OpcaoSorteada == "Papel" || Escolha = "Tesoura" && play.OpcaoSorteada == "Pedra")
             {
-                pontuacaoUser += 1;
+                Pontuacao2 = (contOponent = contOponent + 1).ToString();
+                if(Pontuacao2 == "10")
+                {
+                    Resultado = "Você perdeu :(";
+                }
+            }
+            else if (Escolha == "Tesoura" && play.OpcaoSorteada == "Papel" || Escolha == "Papel" && play.OpcaoSorteada == "Pedra" || Escolha = "Pedra" && play.OpcaoSorteada == "Tesoura")
+            {
+                Pontuacao1 = (contUser = contUser + 1).ToString();
+                if (Pontuacao1 == "10")
+                {
+                    Resultado = "Você venceu :)";
+                }
             }
         }
 
