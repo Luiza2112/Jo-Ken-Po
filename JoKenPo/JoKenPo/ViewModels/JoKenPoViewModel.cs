@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Contacts;
+using JoKenPo.Models;
 
 namespace JoKenPo.ViewModels
 {
@@ -55,7 +55,7 @@ namespace JoKenPo.ViewModels
                 Pontuacao1 = Pontuacao1;
                 Pontuacao2 = Pontuacao2;
             }
-            else if (Escolha == "Papel" && play.OpcaoSorteada == "Tesoura" || Escolha == "Pedra" && play.OpcaoSorteada == "Papel" || Escolha = "Tesoura" && play.OpcaoSorteada == "Pedra")
+            else if (( Escolha == "Papel" && play.OpcaoSorteada == "Tesoura") || (Escolha == "Pedra" && play.OpcaoSorteada == "Papel") || (Escolha == "Tesoura" && play.OpcaoSorteada == "Pedra"))
             {
                 Pontuacao2 = (contOponent = contOponent + 1).ToString();
                 if(Pontuacao2 == "10")
@@ -63,7 +63,7 @@ namespace JoKenPo.ViewModels
                     Resultado = "Você perdeu :(";
                 }
             }
-            else if (Escolha == "Tesoura" && play.OpcaoSorteada == "Papel" || Escolha == "Papel" && play.OpcaoSorteada == "Pedra" || Escolha = "Pedra" && play.OpcaoSorteada == "Tesoura")
+            else if ((Escolha == "Tesoura" && play.OpcaoSorteada == "Papel") || (Escolha == "Papel" && play.OpcaoSorteada == "Pedra") || (Escolha == "Pedra" && play.OpcaoSorteada == "Tesoura"))
             {
                 Pontuacao1 = (contUser = contUser + 1).ToString();
                 if (Pontuacao1 == "10")
